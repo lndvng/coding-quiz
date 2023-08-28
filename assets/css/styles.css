@@ -1,4 +1,4 @@
-/* */
+/* universal styles */
 * {
     background-color: #ecf5ff;
     font-size: 16px;
@@ -9,23 +9,42 @@
     color: #333
 }
 
-/* */
+/* made body div into a container */
 body {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-/* */
+/* made quiz title 50px and added bottom margin */
 h1 {
     font-size: 50px;
     margin-bottom: 30px
 }
 
-/* */
+/* button styles */
 .button {
     font-size: 25px;
+    color: #333;
+    background-color: white;
+    border: 2px solid lightslategray;
+    padding: 8px 10px;
     text-decoration: none;
+    border-radius: 10px;
+}
+
+/* button hover style */
+.button:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: #333;
+}
+
+/* */
+.button[disabled]:hover {
+    cursor: not-allowed;
 }
