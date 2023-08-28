@@ -1,0 +1,52 @@
+/* universal styles */
+* {
+    background-color: #ecf5ff;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333
+}
+
+/* made body div into a container */
+body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* question font style */
+h2 {
+    font-size: 30px;
+    margin-bottom: 30px
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* button styles */
+.button {
+    font-size: 25px;
+    color: #333;
+    background-color: white;
+    border: 2px solid lightslategray;
+    padding: 8px 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+/* button hover style */
+.button:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: #333;
+}
