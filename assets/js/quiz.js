@@ -68,8 +68,8 @@ getNewQuestion = () => {
         h2.innerText = currentQuestion.question;
 
         button.forEach(choice => {
-            const number = choice.dataset['number'];
-            choice.innerText = currentQuestion['choice' + number];
+            const number = choice.dataset["number"];
+            choice.innerText = currentQuestion["choice" + number];
         })
     availableQuestions.splice(questionIndex, 1);
 
@@ -77,8 +77,14 @@ getNewQuestion = () => {
 };
 
 button.forEach(choice => {
-    choice.addEventListener('click', e => {
-        console.log(e.target);
+    choice.addEventListener("click", e => {
+        if(!acceptingAnswers) return;
+
+        acceptingAnswers = false;
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dateset["number"];
+        console.log(selectedAnswer);
+        getNewQuestion();
     });
 });
 
