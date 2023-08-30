@@ -1,5 +1,9 @@
+// defining variables
 const h2 = document.getElementsByTagName('h2');
 const button = Array.from(document.getElementsByClassName('button'));
+const answersEl = document.querySelector('.answers');
+const startEl = document.querySelector('#start');
+const questionEl = document.querySelector('#question');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -7,6 +11,10 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
+const timerEl = document.querySelector('#timer');
+let timeLeft = 200;
+
+// create array for questions
 let questions = [
     {
         question: "What does HTML stand for?",
@@ -50,42 +58,55 @@ let questions = [
     }
 ];
 
-const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 5;
-
-startGame = () => {
+var timeInterval
+startQuiz = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [ ...questions];
-    console.log(availableQuestions);
-    getNewQuestion();
+
+    if (questionEl) {
+        displayQuestions();
+    }
+// timer 
+    timeInterval = setInterval(function () {
+        if (timeLeft > 1) {
+          timerEl.textContent = timeLeft + ' seconds remaining';
+          timeLeft--;
+        } else if (timeLeft === 1) {
+          timerEl.textContent = timeLeft + ' second remaining';
+          timeLeft--;
+        } else {
+          timerEl.textContent = '';
+          clearInterval(timeInterval);
+          displayMessage();
+        }
+      }, 1000);
 };
 
-getNewQuestion = () => {
+// start button brings user to quiz page
+startQuiz();
+    if (startEl) {
+        startEl.addEventListener('click', function (){
+            window.location.replace('./quiz.html')
+        });
+    }
+
+function displayQuestions() {
+    questionEl.textContent = questions[questionCounter].question;
+
+    button[0].textContent = questions[questionCounter].choice1;
+    button[1].textContent = questions[questionCounter].choice2;
+    button[2].textContent = questions[questionCounter].choice3;
+    button[3].textContent = questions[questionCounter].choice4;
+}
+console.log(displayQuestions);
+
+function getNewQuestion(event) {
+console.log(questionCounter);
     questionCounter++;
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-        currentQuestion = availableQuestions[questionIndex];
-        h2.innerText = currentQuestion.question;
-
-        button.forEach(choice => {
-            const number = choice.dataset["number"];
-            choice.innerText = currentQuestion["choice" + number];
-        })
-    availableQuestions.splice(questionIndex, 1);
-
-    acceptingAnswers = true;
+    if (questionEl && questionCounter < questions.length) {
+        displayQuestions();
+    }
 };
 
-button.forEach(choice => {
-    choice.addEventListener("click", e => {
-        if(!acceptingAnswers) return;
-
-        acceptingAnswers = false;
-        const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dateset["number"];
-        console.log(selectedAnswer);
-        getNewQuestion();
-    });
-});
-
-startGame();
+answersEl.addEventListener('click', getNewQuestion);

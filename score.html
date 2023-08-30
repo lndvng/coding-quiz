@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score</title>
+    <!-- linked css and js -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script defer src="./assets/js/score.js"></script>
+</head>
+
+<body>
+    <main class="container">
+        <div id="score" class="highscore">
+            <h1 id="finalScore">0</h1>
+            <form>
+                <input type="text" name="username" id="username" placeholder="username"/>
+                <button type="submit" class="button" id="saceScoreBtn" onclick="saveHighScore(event)">Save</button>
+            </form>
+            <a class="button" href="./index.html">Play Again</a>
+        </div>
+    </main>
+</body>
+
+</html>

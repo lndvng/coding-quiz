@@ -1,6 +1,6 @@
 /* universal styles */
 * {
-    background-color: #ecf5ff;
+    background-color: rgb(205, 198, 195);
     font-size: 16px;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -27,15 +27,20 @@ h1 {
     margin-bottom: 30px
 }
 
+.answers {
+    width: 100%
+}
+
 /* button styles */
 .button {
-    font-size: 25px;
+    font-size: 20px;
     color: #333;
     background-color: white;
     border: 2px solid lightslategray;
     padding: 8px 10px;
     text-decoration: none;
     border-radius: 10px;
+    width: 70%;
 }
 
 /* button hover style */
@@ -48,4 +53,23 @@ h1 {
 /* */
 .button[disabled]:hover {
     cursor: not-allowed;
+}
+
+/* form styling */
+form {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* form input styling */
+input {
+    margin-bottom: 5px;
+    width: 100%;
+    padding: 10px;
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
 }

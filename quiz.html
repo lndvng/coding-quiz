@@ -8,20 +8,25 @@
     <!-- linked css and style sheet -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/quiz.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <script defer src="./assets/js/quiz.js"></script>
 </head>
 
 <body>
+<!-- timer -->
     <main>
         <!-- question -->
         <h2 id="question">What is the answer to this question?</h2>
         <!-- answers -->
         <section class="answers">
-            <a class="button" data-number="1">answer A</a>
-            <a class="button" data-number="2">answer B</a>
-            <a class="button" data-number="3">answer C</a>
-            <a class="button" data-number="4">answer D</a>
+            <a class="button" class="choice-text" data-number="1">answer A</a>
+            <a class="button" class="choice-text" data-number="2">answer B</a>
+            <a class="button" class="choice-text"  data-number="3">answer C</a>
+            <a class="button" class="choice-text" data-number="4">answer D</a>
         </section>
+
+        <div>Time: <span id="timer"></span></div>
+
     </main>
 </body>
 
