@@ -8,6 +8,7 @@
     <!-- linked css and js -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/quiz.css">
     <script defer src="./assets/js/score.js"></script>
 </head>
 
@@ -15,11 +16,17 @@
     <main class="container">
         <div id="score" class="highscore">
             <h1 id="finalScore">0</h1>
-            <form>
+            <form id="entryForm">
                 <input type="text" name="username" id="username" placeholder="username"/>
-                <button type="submit" class="button" id="saceScoreBtn" onclick="saveHighScore(event)">Save</button>
+                <button type="submit" class="button" id="saceScoreBtn">Save</button>
             </form>
-            <a class="button" href="./index.html">Play Again</a>
+
+
+        </div>
+        <div id="scoreboard">
+            <ol id="displayScore"></ol>
+        <a class="button" href="./index.html">Play Again</a>
+        <a class="button">Clear Scores</a>
         </div>
     </main>
 </body>

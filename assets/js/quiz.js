@@ -1,4 +1,4 @@
-// defining variables
+// defining global variables
 const h2 = document.getElementsByTagName('h2');
 const button = Array.from(document.getElementsByClassName('button'));
 const answersEl = document.querySelector('.answers');
@@ -12,7 +12,7 @@ let questionCounter = 0;
 let availableQuestions = [];
 
 const timerEl = document.querySelector('#timer');
-let timeLeft = 200;
+let timeLeft = 75;
 
 // create array for questions
 let questions = [
@@ -22,7 +22,7 @@ let questions = [
         choice2: "Hyper Text Markup Language",
         choice3: "Hyper Text Multiple Language",
         choice4: "Hyper Tool Multi Language",
-        answer: 2
+        answer: "Hyper Text Markup Language"
     },
     {
         question: "What is the purpose of the HTML <a> element?",
@@ -30,7 +30,7 @@ let questions = [
         choice2: "To add a line break in a text",
         choice3: "To display an image",
         choice4: "To define a hyperlink",
-        answer: 4
+        answer: "To define a hyperlink"
     },
     {
         question: "What does CSS stand for?",
@@ -38,7 +38,7 @@ let questions = [
         choice2: "Creative Style Sheets",
         choice3: "Cascading Style Sheets",
         choice4: "Colorful Styling System",
-        answer: 3
+        answer: "Cascading Style Sheets"
     },
     {
         question: "What is the purpose of a FlexBox?",
@@ -46,7 +46,7 @@ let questions = [
         choice2: "Managing database connections",
         choice3: "Styling and positioning elements within a container",
         choice4: "Generating random numbers",
-        answer: 3
+        answer: "Styling and positioning elements within a container"
     },
     {
         question: "What does the NaN value represent in Javascript?",
@@ -54,11 +54,11 @@ let questions = [
         choice2: "New and Null",
         choice3: "Not a Number",
         choice4: "None and No",
-        answer: 3
+        answer: "Not a Number"
     }
 ];
 
-var timeInterval
+let timeInterval
 startQuiz = () => {
     questionCounter = 0;
     score = 0;
@@ -67,7 +67,7 @@ startQuiz = () => {
     if (questionEl) {
         displayQuestions();
     }
-// timer 
+// timer
     timeInterval = setInterval(function () {
         if (timeLeft > 1) {
           timerEl.textContent = timeLeft + ' seconds remaining';
@@ -101,11 +101,24 @@ function displayQuestions() {
 }
 console.log(displayQuestions);
 
+// generates new question
 function getNewQuestion(event) {
-console.log(questionCounter);
+
+    let buttonText = event.target.textContent
+    // if answer is correct, next question will generate. if answer is wrong, alert will pop up.
+    if (buttonText === questions[questionCounter].answer) {
+    } else {
+        timeLeft = timeLeft - 10;
+        alert('incorrect');
+    }
+    
     questionCounter++;
     if (questionEl && questionCounter < questions.length) {
         displayQuestions();
+    }
+    else {
+        localStorage.setItem('timeLeft', timeLeft);
+        window.location.replace('./score.html')
     }
 };
 
